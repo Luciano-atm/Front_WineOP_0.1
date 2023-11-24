@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.button-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 120px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(217,217,217);
+    cursor: pointer;
+}

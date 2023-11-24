@@ -1,0 +1,112 @@
+.main-container{
+    width: 75vw;
+    background: rgb(43, 37, 37);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    display: flex;
+    align-items:center;
+    margin-top: 20px;
+    flex-direction: column;
+    border-radius: 10px;
+}
+@media (max-width: 600px) {
+    .main-container {
+        width: 90vw; 
+    }
+}
+
+
+.type-mach{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    
+}
+
+.text-type-machine{
+    margin-right: 10px;
+}
+
+.type-mach h1{
+    font-size: 20px;
+}
+.id-mach{
+    display: flex;
+    align-items: center;
+}
+.id-mach h1{
+    font-size: 20px;
+}
+.date-main{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.date-main h1{
+    font-size: 20px;
+}
+
+.machines{
+    display: flex;
+}
+
+.dia-h1{
+    padding-right: 20px;
+}
+
+.button-maintenance{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(255, 77, 0);
+    margin: auto;
+    cursor: pointer;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    border-radius: 10px;
+}
+
+.main-time{
+
+}
+
+.text-time{
+    font-size: 20px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+label {
+    margin-bottom: 5px; 
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+input {
+    border-radius: 10px;  
+    padding: 8px;        
+    border: 1px solid #ccc; 
+    align-items: center;
+    font-weight: bolder;
+}
+select {
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #fff; 
+    outline: none; 
+    font-weight: bolder;
+}

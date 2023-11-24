@@ -1,0 +1,25 @@
+# dependencies
+capstone-front/node_modules
+capstone-front/.pnp
+.pnp.js
+
+dist
+# testing
+capstone-front/coverage
+
+# production
+capstone-front/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
+node_modules

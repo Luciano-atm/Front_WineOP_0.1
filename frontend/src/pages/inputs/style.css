@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+
+
+.background-input{
+    font-family: 'Playfair Display', serif;
+    background-image: url('../../images/copa_input.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+.box-container-input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 33px;
+}
+
+.box-top-input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    height: 25vh;
+    width: 80vw;
+    background: rgba(217,217,217,0.5);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    /*backdrop-filter: blur(8.5px);    filto borroso*/ 
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+.top-text-input{
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.box-down-input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 50vh;
+    height: 100%;
+    width: 80vw;
+    background: rgba(217,217,217,0.5);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    /*backdrop-filter: blur(8.5px);    filto borroso*/ 
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content:center;
+    padding-left: 50px;
+    padding-right: 50px;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content:center;
+}
+
+
+.text-input-excel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px; /* Agrega un relleno para separar el texto del borde del contenedor */
+    font-weight: bolder;
+}
+
+.text-input-excel h1 {
+    font-size: 20px;
+    margin: 0; /* Elimina el margen predeterminado del h1 */
+    padding: 5px; /* Agrega relleno alrededor del texto */
+    font-weight: bolder;
+}
+
+
+
+.button-maquina {
+    position: relative;
+    background-color: rgb(249, 249, 248);
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    margin-top: 15px;
+}
+
+.button-maquina::before {
+    content: attr(data-text); 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 14px; 
+}
+.button-succ{
+    background-color: rgb(217,217,217);
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.button-iniciar{
+    background-color: rgb(249, 245, 245);
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    height: 40px;
+    width: 180px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.button-pdf{
+    background-color: rgb(217,217,217);
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    height: 40px;
+    width: 80px;
+}
+
+.next{
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.button-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 120px;
+    font-size: 24px;
+    border-radius: 50px;
+    padding: 8px;
+    border: none;
+    background-color: rgb(217,217,217);
+    margin: auto;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.button-start{
+    text-align: center;
+    text-decoration: none;
+    color: rgb(68,140,71);
+}
+
+.next{
+    display: flex;
+}
+
+.semana{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+.semana-h1{
+    font-size: 20px;
+    padding-right: 20px;
+}
+.main-container{
+    width: 75vw;
+    background: rgb(94, 88, 88);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    border-radius: 10px;
+    
+}

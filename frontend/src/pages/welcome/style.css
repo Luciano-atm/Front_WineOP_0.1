@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+
+
+
+.background-home{
+    font-family: 'Playfair Display', serif;
+    background-image: url('../../images/home.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+}
+
+.welcome-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:space-around;
+    height: 66vh;
+    width: 40vw;
+    background: rgba(217,217,217,0.5);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    backdrop-filter: blur(8.5px);
+    border-radius: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+}
+
+.welcome-text{
+    margin: 3rem 0 2rem 0;
+    color: black;
+    font-size: 50px;
+}
+
+.logos{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ucn-logo{
+    height: 150px;
+    width: 150px;
+}
+
+
+.button-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 220px;
+    font-size: 24px;
+    border-radius: 50px;
+    padding: 8px;
+    border: none;
+    background-color: rgb(217,217,217);
+    margin: auto;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button-next{
+    text-align: center;
+    text-decoration: none;
+    color: rgb(68,140,71);
+}
+
+.vct-logo{
+    padding-top: 50px;
+}
