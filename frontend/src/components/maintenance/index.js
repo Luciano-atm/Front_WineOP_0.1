@@ -3,7 +3,7 @@ import './style.css'
 import axios from 'axios';
 import { TimePicker } from '@material-ui/pickers';
 import swal from 'sweetalert';
-import Swal from 'sweetalert2';
+/*import Swal from 'sweetalert2';*/
 
 
 export const Maintenance = ({ onClose }) => {
@@ -39,7 +39,7 @@ export const Maintenance = ({ onClose }) => {
     const handleMantencion = async () => {
         // Validación de valores
         if (capacidadMinima === 0 || velocidadProcesado === 0 || cantidad === 0 || capacidadMaxima === 0 || tipoMaquina === 0 || tipoMaquina === 'Seleccione una opción') {
-            Swal.fire({
+            swal({
                 icon: 'error',
                 title: 'Error',
                 text: 'Existen valores que no han sido especificados. Por favor, ingrese valores válidos.'
