@@ -67,17 +67,56 @@ export const Inputs = () => {
   }
 
 
-  const download = async (e)=>{
-    e.preventDefault();
-    axios({
-      url:`${process.env.REACT_APP_BACKEND_URL}/getFileInput`,
-      method:'GET',
-      responseType:'blob',
-    }).then((res) =>{
-      console.log(res);
-      FileDownload(res.data,"input.xlsx")
-    })
-  }
+  const download = async (url, filename) => {
+    try {
+      const response = await axios({
+        url,
+        method: 'GET',
+        responseType: 'blob',
+      });
+      console.log(response);
+      FileDownload(response.data, filename);
+    } catch (error) {
+      console.error('Error al descargar el archivo:', error);
+    }
+  };
+
+  const downloadInputFile = async () => {
+    try {
+      const response = await axios({
+        url: `${process.env.REACT_APP_BACKEND_URL}/getFileInput`,
+        method: 'GET',
+        responseType: 'blob',
+      });
+      console.log(response);
+      FileDownload(response.data, 'input.xlsx');
+    } catch (error) {
+      console.error('Error al descargar el archivo de entrada:', error);
+    }
+  };
+
+
+  const iniciarPlanificacion = async () => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/iniciarPlanificacion`);
+      console.log('Respuesta del backend:', response.data);
+  
+      // Llama a download para getFileOutputModelo después de una respuesta exitosa
+      await download(`${process.env.REACT_APP_BACKEND_URL}/getFileOutputModelo`, 'Modelo.pdf');
+      console.log('Descarga de getFileOutputModelo realizada con éxito');
+  
+      // Llama a download para getFileOutputResumen después de getFileOutputModelo
+      await download(`${process.env.REACT_APP_BACKEND_URL}/getFileOutputResumen`, 'Resumen.xlsx');
+      console.log('Descarga de getFileOutputResumen realizada con éxito');
+  
+    } catch (error) {
+      console.error('Error al llamar al backend:', error);
+    }
+  };
+
+
+
+
 
 
 
@@ -92,7 +131,6 @@ export const Inputs = () => {
     }
 
   }
-
   const handleSubmit = async (data) => {
     navigate('/outputs/' + semana)
   }
@@ -100,15 +138,6 @@ export const Inputs = () => {
   function imprimirMensaje() {
     console.log("Este es un mensaje en la consola.");
   }
-
-  const iniciarPlanificacion = async () => {
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/iniciarPlanificacion`);
-      console.log('Respuesta del backend:', response.data);
-    } catch (error) {
-      console.error('Error al llamar al backend:', error);
-    }
-  };
 
 
   return (
@@ -138,7 +167,7 @@ export const Inputs = () => {
                 </div>   
                 <div className="col-6">    
                   <div className='btn-out'>
-                    <button className='button-succ' onClick={(e) =>download(e)}>
+                    <button className='button-succ' onClick={(e) =>downloadInputFile(e)}>
                       Descargar
                     </button>
                   </div> 
