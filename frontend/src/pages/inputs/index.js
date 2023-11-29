@@ -150,11 +150,11 @@ export const Inputs = () => {
           <div className='box-down-input'>
             <div className='main-container'>
               <div className='form'>
-                <label className='text-input-excel'><h1>Ingresar planificación enólogo </h1></label>
+                <label className='text-input-excel'><h1>Ingresar programa vendimia </h1></label>
                 <input type='file' className='form-control' onChange={(e) => subirArchivo(e.target.files)} required></input>
               </div>
               <div className='form'>
-                <label className='text-input-excel'><h1>Ingresar planificación Ingenieros </h1></label>
+                <label className='text-input-excel'><h1>Ingresar plan Lontué</h1></label>
                 <input type='file' className='form-control' onChange={(e) => subirArchivoPdf(e.target.files)} required></input>
               </div>
               <div className="row">
