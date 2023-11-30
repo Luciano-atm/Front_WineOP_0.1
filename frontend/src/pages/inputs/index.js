@@ -89,7 +89,7 @@ export const Inputs = () => {
         responseType: 'blob',
       });
       console.log(response);
-      FileDownload(response.data, 'input.xlsx');
+      FileDownload(response.data, 'Info de día.xlsx');
     } catch (error) {
       console.error('Error al descargar el archivo de entrada:', error);
     }
