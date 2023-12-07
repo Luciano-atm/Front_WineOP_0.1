@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
-import { Maintenance } from '../../components/maintenance'
+import { Maintenance } from '../../components/maintenance';
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import swal from 'sweetalert';
@@ -15,6 +15,8 @@ export const Inputs = () => {
   const [archivo_pdf, setArchivoPfd]= useState(null);
   const [semanas, setSemanas] = useState([]);
   const navigate = useNavigate();
+  const [mostrarPDF, setMostrarPDF] = useState(false);
+  const [pdfURL, setPdfURL] = useState(null); // Debes establecer pdfURL a la URL correcta del PDF
 
   const handleAdd = () => {
     setShowMaintenance(true); // Muestra el componente cuando se presiona el botón
@@ -102,7 +104,7 @@ export const Inputs = () => {
       console.log('Respuesta del backend:', response.data);
   
       // Llama a download para getFileOutputModelo después de una respuesta exitosa
-      await download(`${process.env.REACT_APP_BACKEND_URL}/getFileOutputModelo`, 'Modelo.pdf');
+      await download(`${process.env.REACT_APP_BACKEND_URL}/getFileOutputModelo`, 'Planificación del día.pdf');
       console.log('Descarga de getFileOutputModelo realizada con éxito');
   
       // Llama a download para getFileOutputResumen después de getFileOutputModelo
@@ -114,7 +116,12 @@ export const Inputs = () => {
     }
   };
 
-
+  const visualizarPDF = () => {
+    const urlPdf = `${process.env.REACT_APP_BACKEND_URL}/getUrlPlanificacion`;
+    setPdfURL(urlPdf);
+    setMostrarPDF(true); // Establecer mostrarPDF a true para mostrar el PDF
+    //window.open(pdfURL, '_blank'); // Establecer mostrarPDF a true para mostrar el PDF
+  };
 
 
 
@@ -200,6 +207,28 @@ export const Inputs = () => {
                 Realizar Planificación
               </button>
             </div>
+            <div>
+            {/* Botón para cambiar entre "Visualizar PDF" y "Ocultar PDF" */}
+            <button className='button-succ' onClick={visualizarPDF}>
+              {mostrarPDF ? 'Ocultar PDF' : 'Visualizar PDF'}
+            </button>
+
+            {/* Mostrar el visor de PDF si hay una URL de PDF y mostrarPDF es verdadero */}
+            {pdfURL && mostrarPDF && (
+              <div className='pdf-viewer'>
+                <embed src={pdfURL} type='application/pdf' width='100%' height='600px' />
+              </div>
+            )}
+            </div>
+
+            <dib className='pdf-container'>
+                <Worker WorkerUrl="https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js">
+                    {viewPdf && <>
+                    <Viewer fileUrl={pdfURL} plugins={[newplugin]}/>
+                    </>}
+                    {!viewPdf && <>No PDF</>}
+                </Worker>
+            </dib>
           </div>
         {/*</form>*/}
       </div>

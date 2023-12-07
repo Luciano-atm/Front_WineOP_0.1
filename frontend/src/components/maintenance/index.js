@@ -7,21 +7,11 @@ import swal from 'sweetalert';
 
 
 export const Maintenance = ({ onClose }) => {
-    const [machines,setMachines] = useState([]);
-    const [tipo, setTipo] = useState("");
-    const [idMachine, setIdMachine] = useState(0);
-    const [diaSemana, setDiaSemana] = useState(0);
-    const [semana, setSemana] = useState(0)
-    const [horaInicio, setHoraInicio] = useState(new Date());
-    const [horaFin, setHoraFin] = useState(new Date());
-
 
     const [mostrarFormulario, setMostrarFormulario] = useState(true);
-    const [capacidadMinima, setCapacidadMinima]= useState();
-    const [velocidadProcesado, setVelocidadProcesado]= useState();
-    const [tipoMaquina, setTipoMaquina]= useState();
-    const [cantidad, setCantidad]= useState();
-    const [capacidadMaxima, setCapacidadMaxima]= useState();
+    const [tiempoProcesado, setTiempoProcesado]= useState(1);
+    const [tarea, setTarea]= useState();
+    const [capacidadMaxima, setCapacidadMaxima]= useState(0);
 
     {/*useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/maquinas`).then((response) => {
@@ -30,15 +20,15 @@ export const Maintenance = ({ onClose }) => {
         
     }, []) */}
 
-    const handlerCargarId = function(e){
+    {/*const handlerCargarId = function(e){
         const opcion = e.target.value;
         setIdMachine(machines[opcion].id_maquina);
         setTipo(machines[opcion].tipo)
-    }
+    }*/}
 
     const handleMantencion = async () => {
         // Validación de valores
-        if (capacidadMinima === 0 || velocidadProcesado === 0 || cantidad === 0 || capacidadMaxima === 0 || tipoMaquina === 0 || tipoMaquina === 'Seleccione una opción') {
+        if (tiempoProcesado === 'Seleccione una velocidad' || capacidadMaxima === 0 ||  tarea === 'Seleccione una opción') {
             swal({
                 icon: 'error',
                 title: 'Error',
@@ -48,11 +38,9 @@ export const Maintenance = ({ onClose }) => {
         }
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/setAgregarMaquina`, {
-                tipoMaquina: tipoMaquina,
+                tarea: tarea,
                 capacidadMaxima: capacidadMaxima,
-                capacidadMinima: capacidadMinima,
-                cantidad: cantidad,
-                velocidadProcesado: velocidadProcesado
+                tiempoProcesado: tiempoProcesado
             });
     
             if (response.status === 200) {
@@ -64,11 +52,9 @@ export const Maintenance = ({ onClose }) => {
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
-                    setCapacidadMinima('');
-                    setVelocidadProcesado('');
-                    setTipoMaquina('Seleccione una opción');
-                    setCantidad('');
-                    setCapacidadMaxima('');
+                    setTiempoProcesado('1');
+                    setTarea('Seleccione una opción');
+                    setCapacidadMaxima(0);
                 });
             }
         } catch (error) {
@@ -89,15 +75,34 @@ export const Maintenance = ({ onClose }) => {
     };
 
     const opcionesVelocidad = {
-        'Despalillado': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs'],
-        'Prensado': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs'],
-        'Pre-flotación': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs'],
-        'Flotación': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs'],
-        'Fermentación': ['10 días','11 días', '12 días', '13 días', '14 días', '15 días','16 días','17 días','18 días','19 días','20 días']
+        'Despalillado': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs','11 hrs','12 hrs'],
+        'Prensado': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs','11 hrs','12 hrs'],
+        'Pre-flotación': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs','11 hrs','12 hrs'],
+        'Flotación': ['1 hrs', '2 hrs', '3 hrs', '4 hrs', '5 hrs','6 hrs','7 hrs','8 hrs','9 hrs','10 hrs','11 hrs','12 hrs']
     };
-    const obtenerDigito = (opcion) => {
-        return opcion.split(' ')[0]; // Obtiene la parte numérica antes del espacio
+
+    const opcionescapacidadMaxima = {
+        'Despalillado': ['10.000 Kilos', '20.000 Kilos', '30.000 Kilos', '40.000 Kilos', '50.000 Kilos','60.000 Kilos','70.000 Kilos','80.000 Kilos','90.000 Kilos','100.000 Kilos'],
+        'Prensado': ['10.000 Kilos', '20.000 Kilos', '30.000 Kilos', '40.000 Kilos', '50.000 Kilos','60.000 Kilos','70.000 Kilos','80.000 Kilos','90.000 Kilos','100.000 Kilos'],
+        'Pre-flotación': ['10.000 litos', '20.000 litos', '30.000 litos', '40.000 litos', '50.000 litos','60.000 litos','70.000 litos','80.000 litos','90.000 litos','100.000 litos'],
+        'Flotación': ['10.000 litos', '20.000 litos', '30.000 litos', '40.000 litos', '50.000 litos','60.000 litos','70.000 litos','80.000 litos','90.000 litos','100.000 litos'],
+        'Fermantación': ['10.000 litos', '20.000 litos', '30.000 litos', '40.000 litos', '50.000 litos','60.000 litos','70.000 litos','80.000 litos','90.000 litos','100.000 litos']
+
     };
+
+    const obtenerDigito = (opcion, tarea) => {
+        if (tarea === 'Despalillado' || tarea === 'Prensado'){
+            const numeroPunto = opcion.split(' ')[0];
+            return numeroPunto.split('.')[0];
+        }
+        else{
+            const numeroPunto = opcion.split(' ')[0];
+            return numeroPunto.split('.').join('');
+        }
+    };
+    
+    
+
     
     const handleClose = () => {
         onClose(); // Llama a la función onClose para cerrar la tabla de ingreso
@@ -117,7 +122,7 @@ export const Maintenance = ({ onClose }) => {
                             <div className="col-6">
                                 <div className='contenedor'>
                                     <label htmlFor="Tipomaquina">  Tarea:</label>
-                                    <select name='Tipomaquina' onChange={(event) => setTipoMaquina(event.target.value)} value={tipoMaquina}>
+                                    <select name='Tipomaquina' onChange={(event) => setTarea(event.target.value)} value={tarea}>
                                         <option value={'Seleccione una opción'}>Seleccione una opción</option>
                                         <option value={'Despalillado'}>Despalillado</option>
                                         <option value={'Prensado'}>Prensado</option>
@@ -126,46 +131,59 @@ export const Maintenance = ({ onClose }) => {
                                         <option value={'Fermentación'}>Fermentación</option>
                                     </select>
                                 </div>
-        
-                                <div className='contenedor'>
-                                    <label htmlFor="Capmax">  Capacidad Mínima:</label>
-                                    <input type='number' id='Capmax' min="1" max="100" onChange={(event) => setCapacidadMinima(event.target.value)} value={capacidadMinima}/>
-                                </div>
 
-                                <div className='contenedor'>
-                                    <label htmlFor="Cantidad">  Cantidad:</label>
-                                    <input type='number' id='Cantidad' min="1" max="100" onChange={(event) => setCantidad(event.target.value)} value={cantidad} />
-                                </div>
-                                
+                                {tarea !== 'Fermentación' && ( // Mostrar el segundo contenedor solo si no es "Fermentación"
+                                    <div className='contenedor'>
+                                    <label htmlFor="Velocidad">  Tiempo de procesado:</label>
+                                    <select
+                                        id='Velocidad'
+                                        onChange={(event) => {
+                                        const velocidad = obtenerDigito(event.target.value, tarea);
+                                        setTiempoProcesado(velocidad);
+                                        }}
+                                        value={tiempoProcesado}
+                                        disabled={tarea === 'Seleccione una opción' || !opcionesVelocidad[tarea]}
+                                    >
+                                        <option value=''>Seleccione tiempo de procesado</option>
+                                        {tarea !== 'Seleccione una opción' && opcionesVelocidad[tarea] && (
+                                        opcionesVelocidad[tarea].map((opcion, index) => (
+                                            <option key={index} value={obtenerDigito(opcion,tarea)}>
+                                            {opcion}
+                                            </option>
+                                        ))
+                                        )}
+                                    </select>
+                                    </div>
+                                )}
+   
                             </div>
         
                             <div className="col-6">
                                 <div className='contenedor'>
-                                    <label htmlFor="Velocidad">  Demora promedio:</label>
+                                    <label htmlFor="Capmax">Capacidad máxima:</label>
                                     <select
-                                        id='Velocidad'
+                                        id='Capmax'
                                         onChange={(event) => {
-                                          const velocidad = obtenerDigito(event.target.value);
-                                          setVelocidadProcesado(velocidad);
+                                            const capacidadMaxima = obtenerDigito(event.target.value, tarea);
+                                            setCapacidadMaxima(capacidadMaxima);
                                         }}
-                                        value={velocidadProcesado}
-                                        disabled={tipoMaquina === 'Seleccione una opción' || !opcionesVelocidad[tipoMaquina]}
-                                      >
-                                        <option value=''>Seleccione una velocidad</option>
-                                        {tipoMaquina !== 'Seleccione una opción' && opcionesVelocidad[tipoMaquina] && (
-                                          opcionesVelocidad[tipoMaquina].map((opcion, index) => (
-                                            <option key={index} value={obtenerDigito(opcion)}>
-                                              {opcion}
-                                            </option>
-                                          ))
+                                        value={capacidadMaxima}
+                                        disabled={tarea === 'Seleccione una opción' || !opcionescapacidadMaxima[tarea]}
+                                    >
+                                        <option value=''>Seleccione capacidad máxima:</option>
+                                        {tarea !== 'Seleccione una opción' && opcionescapacidadMaxima[tarea] && (
+                                            opcionescapacidadMaxima[tarea].map((opcion, index) => {
+                                                const capacidad = obtenerDigito(opcion, tarea);
+                                                return (
+                                                    <option key={index} value={capacidad}>
+                                                        {opcion}
+                                                    </option>
+                                                );
+                                            })
                                         )}
                                     </select>
                                 </div>
-        
-                                <div className='contenedor'>
-                                    <label htmlFor="Capmax">  Capacidad Máxima:</label>
-                                    <input type='number' id='CapacidadMaxima' min="1" max="100" onChange={(event) => setCapacidadMaxima(event.target.value)} value={capacidadMaxima}/>
-                                </div>
+
                             </div>
                             <div className="row">
                                 <div className="col-6">
