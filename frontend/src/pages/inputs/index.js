@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 import FileDownload from "js-file-download";
 
 
+
 export const Inputs = () => {
   const [showMaintenance, setShowMaintenance] = useState(false);
   const [semana, setSemana] = useState(null);
@@ -119,8 +120,8 @@ export const Inputs = () => {
   const visualizarPDF = () => {
     const urlPdf = `${process.env.REACT_APP_BACKEND_URL}/getUrlPlanificacion`;
     setPdfURL(urlPdf);
-    setMostrarPDF(true); // Establecer mostrarPDF a true para mostrar el PDF
-    //window.open(pdfURL, '_blank'); // Establecer mostrarPDF a true para mostrar el PDF
+    //setMostrarPDF(true); // Establecer mostrarPDF a true para mostrar el PDF
+    window.open(pdfURL, '_blank'); // Establecer mostrarPDF a true para mostrar el PDF
   };
 
 
@@ -221,14 +222,6 @@ export const Inputs = () => {
             )}
             </div>
 
-            <dib className='pdf-container'>
-                <Worker WorkerUrl="https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js">
-                    {viewPdf && <>
-                    <Viewer fileUrl={pdfURL} plugins={[newplugin]}/>
-                    </>}
-                    {!viewPdf && <>No PDF</>}
-                </Worker>
-            </dib>
           </div>
         {/*</form>*/}
       </div>

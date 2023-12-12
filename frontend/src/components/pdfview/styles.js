@@ -1,5 +1,5 @@
 import React from "react";
-import './pdf.css'
+import './styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from "react";
 
