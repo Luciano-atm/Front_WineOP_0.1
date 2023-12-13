@@ -191,30 +191,28 @@ export const Inputs = () => {
                 ))}
               </select>
                 </div> */}
-
               <div className='maintenance'>
-                    <button
-                      className='button-maquina'
-                      type='button'
-                      onClick={handleAdd}
-                      disabled={showMaintenance}
-                    >
-                      Añadir Máquina
-                    </button>
-                    {showMaintenance && <Maintenance onClose={handleClose} />}
-                  </div>
+                <button
+                  className='button-maquina'
+                  type='button'
+                  onClick={handleAdd}
+                  disabled={showMaintenance}
+                >
+                  Añadir Máquina/Cambiar estado
+                </button>
+                {showMaintenance && <Maintenance onClose={handleClose} />}
+              </div>
+              
+              
             <div className='next'>
               <button className='button-iniciar' onClick={(e) =>iniciarPlanificacion(e)}>
                 Realizar Planificación
               </button>
             </div>
             <div>
-            {/* Botón para cambiar entre "Visualizar PDF" y "Ocultar PDF" */}
             <button className='button-succ' onClick={visualizarPDF}>
               {mostrarPDF ? 'Ocultar PDF' : 'Visualizar PDF'}
             </button>
-
-            {/* Mostrar el visor de PDF si hay una URL de PDF y mostrarPDF es verdadero */}
             {pdfURL && mostrarPDF && (
               <div className='pdf-viewer'>
                 <embed src={pdfURL} type='application/pdf' width='100%' height='600px' />

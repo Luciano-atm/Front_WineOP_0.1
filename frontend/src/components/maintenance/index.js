@@ -214,8 +214,17 @@ export const Maintenance = ({ onClose }) => {
         <div>
             {mostrarFormulario && (
                 <div className='main-container'>
-                
+                    <div className="container">
+                        <div className='bob'>
+                        <button  onClick={handleClose}>
+                        &#10006; {/* Carácter Unicode para la "X" */}
+                        </button>
+                        </div>
+                    
+                    </div>
                     <div className="container px-4 text-center">
+                        
+                        
                         <div className='tittle-container'>
                             <label htmlFor="title">Agregar nueva máquina:</label>
                         </div>
@@ -287,16 +296,14 @@ export const Maintenance = ({ onClose }) => {
 
                             </div>
                             
-                            <div className="row">
-                                <div className="col-6">
-                                    <button className='button-maintenance' onClick={handleMantencion}>INGRESAR MAQUINA</button>
-                                </div>    
-                            
-                                <div className="col-6">
-                                    <button className='button-maintenance' onClick={handleClose}>ELIMINAR FORMULARIO</button>
-                                </div>    
+                        </div>   
+                        <div className="container">
+                            <div className="bob">
+                                <button className='button-maintenance' onClick={handleMantencion}>INGRESAR MAQUINA</button>
                             </div>
-
+                        </div>       
+                            
+                        <div className="row">
                             <div>
                                 <label htmlFor="title">Habilitar/Deshabilitar:</label>
                             </div>
@@ -342,12 +349,15 @@ export const Maintenance = ({ onClose }) => {
                                         
                                     </div>
                                 )}
-                                <div>
+                            </div>      
+                            <div className="container">
+                                <div className="bob">
                                     <button className='button-maintenance' onClick={cambiarEstadoMaquinaBackend}>
                                     {textoBoton} máquina
                                 </button>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
